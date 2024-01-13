@@ -1,6 +1,6 @@
 {
   "name": "express-routes-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get all the routes created using express router",
   "main": "index.js",
   "scripts": {

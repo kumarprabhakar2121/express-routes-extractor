@@ -39,9 +39,11 @@ const myApp = express();
 
 // Extract routes
 const routes = expressRoutesExtractor.extractExpressRoutes(myApp);
+// return array of routes: [ { path: '/ping', method: 'POST' }  ]
 
 // Check if the application is an Express router
 const isRouter = expressRoutesExtractor.isExpressRouter(myApp);
+// returns 'true' if the application is an Express router otherwise false
 ```
 
 ## API Reference
