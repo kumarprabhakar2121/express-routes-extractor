@@ -1,0 +1,25 @@
+{
+  "name": "express-routes-extractor",
+  "version": "1.0.0",
+  "description": "Get all the routes created using express router",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumarprabhakar2121/express-routes-extractor.git"
+  },
+  "keywords": [
+    "express",
+    "router",
+    "routes",
+    "route",
+    "getroute"
+  ],
+  "author": "Prabhakar Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kumarprabhakar2121/express-routes-extractor/issues"
+  },
+  "homepage": "https://github.com/kumarprabhakar2121/express-routes-extractor#readme"
+}
