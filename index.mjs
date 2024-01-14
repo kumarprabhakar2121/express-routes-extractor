@@ -1,4 +1,4 @@
-const pathModule = require("path");
+import pathModule from "path";
 
 /**
  * Extracts a path from a regular expression.
@@ -31,10 +31,7 @@ function flattenNestedStacks(accumulator, currentStack) {
     try {
         if (currentStack.handle.stack) {
             const routerPath = extractPathFromRegex(currentStack.regexp);
-            return [
-                ...accumulator,
-                ...currentStack.handle.stack.map((nestedStack) => ({ routerPath, ...nestedStack }))
-            ];
+            return [...accumulator, ...currentStack.handle.stack.map((nestedStack) => ({ routerPath, ...nestedStack }))];
         }
         return [...accumulator, currentStack];
     } catch (error) {
@@ -146,6 +143,7 @@ function extractExpressRoutes(application) {
                 processRoutes(currentStack, prefix, paths);
             }
         }
+
         return paths;
     } catch (error) {
         console.error("Error in extractExpressRoutes:", error.message);
@@ -169,4 +167,4 @@ function isExpressRouter(application) {
     }
 }
 
-module.exports = { extractExpressRoutes, isExpressRouter };
+export { extractExpressRoutes, isExpressRouter };

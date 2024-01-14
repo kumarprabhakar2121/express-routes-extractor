@@ -1,4 +1,3 @@
-Certainly! Below is a sample README file for the provided code:
 
 ---
 
@@ -30,20 +29,47 @@ npm install express-routes-extractor
 
 ## Usage
 
+### ES6 Module
+
 ```javascript
-const expressRoutesExtractor = require('express-routes-extractor');
-const express = require('express');
+import { extractExpressRoutes, isExpressRouter } from 'express-routes-extractor';
+import express from 'express';
+
 // Your Express application instance
-// ... initialize your Express app
 const myApp = express();
 
 // Extract routes
-const routes = expressRoutesExtractor.extractExpressRoutes(myApp);
-// return array of routes: [ { path: '/ping', method: 'POST' }  ]
+const routes = extractExpressRoutes(myApp);
+// Returns an array of route objects with information about the HTTP method and path.
+/* [ { path: '/ping', method: 'POST' }  ] */
 
 // Check if the application is an Express router
-const isRouter = expressRoutesExtractor.isExpressRouter(myApp);
-// returns 'true' if the application is an Express router otherwise false
+import router from "./router.js";
+
+const isRouter = isExpressRouter(router);
+console.log('Is Express Router:', isRouter); // true
+// Returns 'true' if the application is an Express router, otherwise false.
+```
+
+### CommonJS (Node.js)
+
+```javascript
+const { extractExpressRoutes, isExpressRouter } = require('express-routes-extractor');
+const express = require('express');
+
+// Your Express application instance
+const myApp = express();
+
+// Extract routes
+const routes = extractExpressRoutes(myApp);
+// Returns an array of route objects with information about the HTTP method and path.
+/* [ { path: '/ping', method: 'POST' }  ] */
+
+// Check if the application is an Express router
+const router = require("./user-router.js");
+const isRouter = isExpressRouter(router);
+console.log('Is Express Router:', isRouter); // true
+// Returns 'true' if the application is an Express router, otherwise false.
 ```
 
 ## API Reference
@@ -71,15 +97,19 @@ Checks if the given application is an Express router.
 ## Examples
 
 ```javascript
-const expressRoutesExtractor = require('express-routes-extractor');
-// ... initialize your Express app
+import { extractExpressRoutes, isExpressRouter } from 'express-routes-extractor';
+import express from 'express';
+
+// Your Express application instance
 const myApp = express();
 
-const routes = expressRoutesExtractor.extractExpressRoutes(myApp);
+const routes = extractExpressRoutes(myApp);
 console.log('Extracted Routes:', routes);
+/* [ { path: '/ping', method: 'POST' }  ] */
 
-const isRouter = expressRoutesExtractor.isExpressRouter(myApp);
-console.log('Is Express Router:', isRouter);
+const router = require("./user-router.js");
+const isRouter = isExpressRouter(router);
+console.log('Is Express Router:', isRouter); // true
 ```
 
 ## Contributing

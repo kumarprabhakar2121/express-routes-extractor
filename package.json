@@ -1,25 +1,54 @@
 {
-  "name": "express-routes-extractor",
-  "version": "1.0.1",
-  "description": "Get all the routes created using express router",
-  "main": "index.js",
-  "scripts": {
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kumarprabhakar2121/express-routes-extractor.git"
-  },
-  "keywords": [
-    "express",
-    "router",
-    "routes",
-    "route",
-    "getroute"
-  ],
-  "author": "Prabhakar Kumar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kumarprabhakar2121/express-routes-extractor/issues"
-  },
-  "homepage": "https://github.com/kumarprabhakar2121/express-routes-extractor#readme"
+    "name": "express-routes-extractor",
+    "version": "1.2.1",
+    "description": "Get all the routes created using express router",
+    "main": "index.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kumarprabhakar2121/express-routes-extractor.git"
+    },
+    "keywords": [
+        "express",
+        "router",
+        "routes",
+        "route",
+        "get express routes",
+        "get route",
+        "express",
+        "routes",
+        "route-extraction",
+        "route-analysis",
+        "middleware",
+        "route-processing",
+        "web-framework",
+        "server",
+        "routing",
+        "API",
+        "JavaScript",
+        "Node.js",
+        "MERN-stack",
+        "web-development",
+        "utility",
+        "tool"
+    ],
+    "author": "Prabhakar Kumar",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kumarprabhakar2121/express-routes-extractor/issues"
+    },
+    "homepage": "https://github.com/kumarprabhakar2121/express-routes-extractor#readme",
+    "dependencies": {},
+    "exports": {
+        ".": {
+            "node": {
+                "module": "./index.mjs",
+                "require": "./index.js",
+                "import": "./wrapper.mjs"
+            }
+        },
+        "./package.json": "./package.json"
+    },
+    "module": "./index.mjs"
 }
+
