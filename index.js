@@ -52,7 +52,7 @@ function flattenNestedStacks(accumulator, currentStack) {
 function getStacksFromApp(application) {
     try {
         // Express 3
-        if (application.routes) {
+        if (application?.routes) {
             // Convert to Express 4
             return Object.keys(application.routes)
                 .reduce((accumulator, method) => [...accumulator, ...application.routes[method]], [])
@@ -60,17 +60,17 @@ function getStacksFromApp(application) {
         }
 
         // Express 4
-        if (application._router && application._router.stack) {
+        if (application?._router?.stack) {
             return application._router.stack.reduce(flattenNestedStacks, []);
         }
 
         // Express 4 Router
-        if (application.stack) {
+        if (application?.stack) {
             return application.stack.reduce(flattenNestedStacks, []);
         }
 
         // Express 5
-        if (application.router && application.router.stack) {
+        if (application?.router?.stack) {
             return application.router.stack.reduce(flattenNestedStacks, []);
         }
 
