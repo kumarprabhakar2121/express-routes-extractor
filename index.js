@@ -16,7 +16,7 @@ function extractPathFromRegex(regexp) {
             .replace("(?:/(?=$))", "");
     } catch (error) {
         console.error("Error in extractPathFromRegex:", error.message);
-        return '';
+        return "";
     }
 }
 
@@ -92,7 +92,7 @@ function normalizePathSegments(segments) {
         return pathModule.normalize(segments.filter((segment) => !!segment).join("")).trim();
     } catch (error) {
         console.error("Error in normalizePathSegments:", error.message);
-        return '';
+        return "";
     }
 }
 
@@ -146,7 +146,8 @@ function extractExpressRoutes(application) {
                 processRoutes(currentStack, prefix, paths);
             }
         }
-        return paths;
+        const uniquePaths = makeRoutesUnique(paths);
+        return uniquePaths;
     } catch (error) {
         console.error("Error in extractExpressRoutes:", error.message);
         return [];
@@ -167,6 +168,45 @@ function isExpressRouter(application) {
         console.error("Error in isExpressRouter:", error.message);
         return false;
     }
+}
+
+/**
+ * Makes an array of routes unique based on the combination of method and path.
+ *
+ * @param {Array<{ method: string, path: string }>} inputRoutes - The array of routes to make unique.
+ * @returns {Array<{ method: string, path: string }>} - The array of unique routes.
+ */
+function makeRoutesUnique(inputRoutes) {
+    /**
+     * Set to keep track of unique combinations of method and path.
+     * @type {Set<string>}
+     */
+    const uniqueRouteKeys = new Set();
+
+    /**
+     * Array to store the result of unique routes.
+     * @type {Array<{ method: string, path: string }>}
+     */
+    const uniqueRoutes = [];
+
+    // Iterate through the inputRoutes array
+    for (const route of inputRoutes) {
+        /**
+         * Unique key representing the combination of method and path.
+         * @type {string}
+         */
+        const routeKey = `${route.method}-${route.path}`;
+
+        // Check if the combination of method and path is already in the set
+        if (!uniqueRouteKeys.has(routeKey)) {
+            uniqueRouteKeys.add(routeKey);
+
+            // If not, add it to the uniqueRoutes array
+            uniqueRoutes.push(route);
+        }
+    }
+
+    return uniqueRoutes;
 }
 
 module.exports = { extractExpressRoutes, isExpressRouter };
